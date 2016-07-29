@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Comptroller.Core.Services.DataStore
+namespace Comptroller.Core.DataManagers
 {
-	public interface IRepository<T>
+	public interface IDataManager<T>
 	{
 		List<T> GetAll();
 		void Add(T item);

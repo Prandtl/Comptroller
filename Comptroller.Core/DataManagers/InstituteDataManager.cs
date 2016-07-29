@@ -4,12 +4,12 @@ using Comptroller.Core.Models;
 using MvvmCross.Plugins.Sqlite;
 using SQLite.Net;
 
-namespace Comptroller.Core.Services.DataStore
+namespace Comptroller.Core.DataManagers
 {
-	public class InstituteRepository : IRepository<Institute>
+	public class InstituteDataManager : IDataManager<Institute>
 	{
 
-		public InstituteRepository(IMvxSqliteConnectionFactory factory)
+		public InstituteDataManager(IMvxSqliteConnectionFactory factory)
 		{
 			_connection = factory.GetConnection("comptroller.sql");
 			_connection.CreateTable<Institute>();
