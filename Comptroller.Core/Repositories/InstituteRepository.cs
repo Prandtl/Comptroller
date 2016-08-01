@@ -27,10 +27,10 @@ namespace Comptroller.Core.Repositories
 			if (all != null)
 			{
 				if (all.Select(x => x.Name).Contains(newInstitute.Name))
-					throw new Exception("Institute name already exists");
+					_messenger.Publish(new RepositoryActionFailed<IInstituteRepository>(this, this, $"Institute with name '{newInstitute.Name}' already exists."));
 			}
 			_dataManager.Add(newInstitute);
-			_messenger.Publish(new RepositoryChangedMessage<IInstituteRepository>(this,this,"add"));
+			_messenger.Publish(new RepositoryChangedMessage<IInstituteRepository>(this, this, "add"));
 		}
 
 		public void Update(Institute institute)
@@ -38,8 +38,8 @@ namespace Comptroller.Core.Repositories
 			var all = GetAll();
 			if (all != null)
 			{
-				if(all.Select(x=>x.Name).Contains(institute.Name))
-					throw new Exception("Institute name already exists");
+				if (all.Select(x => x.Name).Contains(institute.Name))
+					_messenger.Publish(new RepositoryActionFailed<IInstituteRepository>(this, this, $"Institute with name '{institute.Name}' already exists."));
 			}
 			_dataManager.Update(institute);
 			_messenger.Publish(new RepositoryChangedMessage<IInstituteRepository>(this, this, "update"));

@@ -70,7 +70,8 @@ namespace Comptroller.Tests
 			var institute2 = new Institute { Id = 0, Name = "ИСПН" };
 			var institutes = new List<Institute> { institute1 };
 			_instituteDmMock.Setup(dm => dm.GetAll()).Returns(institutes);
-			Assert.Throws<Exception>(() => _instituteRepository.Add(institute2));
+			_instituteRepository.Add(institute2);
+			_messengerMock.Verify(mess=>mess.Publish(It.IsAny<RepositoryActionFailed<IInstituteRepository>>()));
 		}
 
 		[Test]
@@ -80,7 +81,8 @@ namespace Comptroller.Tests
 			var institute2 = new Institute { Id = 0, Name = "ИСПН" };
 			var institutes = new List<Institute> { institute1 };
 			_instituteDmMock.Setup(dm => dm.GetAll()).Returns(institutes);
-			Assert.Throws<Exception>(() => _instituteRepository.Update(institute2));
+			_instituteRepository.Update(institute2);
+			_messengerMock.Verify(mess=>mess.Publish(It.IsAny<RepositoryActionFailed<IInstituteRepository>>()));
 		}
 
 		[Test]
