@@ -3,7 +3,7 @@ using Comptroller.Core.Models;
 
 namespace Comptroller.Core.Repositories
 {
-	public interface IInstituteRepository
+	public interface IInstituteRepository:IRepository
 	{
 		List<Institute> GetAll();
 		void Add(Institute newInstitute);

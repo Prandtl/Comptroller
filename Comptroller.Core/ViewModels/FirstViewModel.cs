@@ -8,16 +8,12 @@ namespace Comptroller.Core.ViewModels
 	public class FirstViewModel
 		: MvxViewModel
 	{
-		private List<Institute> _institutes;
-
 		public List<Institute> Institutes
 		{
 			get { return _institutes; }
 			set { SetProperty(ref _institutes, value); }
 		}
-
-		private MvxCommand _addInstituteCommand;
-
+		
 		public ICommand AddInstituteCommand
 		{
 			get
@@ -31,6 +27,10 @@ namespace Comptroller.Core.ViewModels
 		{
 			ShowViewModel<AddInstituteViewModel>();
 		}
+
+
+		private List<Institute> _institutes;
+		private MvxCommand _addInstituteCommand;
 	}
 
 }
