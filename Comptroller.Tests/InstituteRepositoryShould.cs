@@ -74,6 +74,16 @@ namespace Comptroller.Tests
 		}
 
 		[Test]
+		public void NotUpdateNameIfItAlreadyExists()
+		{
+			var institute1 = new Institute { Id = 0, Name = "ИСПН" };
+			var institute2 = new Institute { Id = 0, Name = "ИСПН" };
+			var institutes = new List<Institute> { institute1 };
+			_instituteDmMock.Setup(dm => dm.GetAll()).Returns(institutes);
+			Assert.Throws<Exception>(() => _instituteRepository.Update(institute2));
+		}
+
+		[Test]
 		public void SendARepositoryChangedMessageOnChange()
 		{
 			_instituteRepository.Add(new Institute());

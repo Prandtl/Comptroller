@@ -27,7 +27,7 @@ namespace Comptroller.Core.Repositories
 			if (all != null)
 			{
 				if (all.Select(x => x.Name).Contains(newInstitute.Name))
-					throw new Exception("Institute name is not unique");
+					throw new Exception("Institute name already exists");
 			}
 			_dataManager.Add(newInstitute);
 			_messenger.Publish(new RepositoryChangedMessage<IInstituteRepository>(this,this,"add"));
@@ -35,7 +35,12 @@ namespace Comptroller.Core.Repositories
 
 		public void Update(Institute institute)
 		{
-			//todo same as add no double names
+			var all = GetAll();
+			if (all != null)
+			{
+				if(all.Select(x=>x.Name).Contains(institute.Name))
+					throw new Exception("Institute name already exists");
+			}
 			_dataManager.Update(institute);
 			_messenger.Publish(new RepositoryChangedMessage<IInstituteRepository>(this, this, "update"));
 		}
