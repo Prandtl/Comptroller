@@ -1,3 +1,4 @@
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Comptroller.Core.Messages;
 using Comptroller.Core.Models;
@@ -13,6 +14,7 @@ namespace Comptroller.Core.ViewModels
 		{
 			_instituteRepository = instituteRepository;
 			_token = messenger.Subscribe<RepositoryActionFailed<IInstituteRepository>>(OnActionFailed);
+			_token = messenger.Subscribe<RepositoryChangedMessage<IInstituteRepository>>(OnRepoChanged);
 		}
 
 		public string InstituteName
@@ -25,6 +27,12 @@ namespace Comptroller.Core.ViewModels
 		{
 			get { return _errorMessage; }
 			set { SetProperty(ref _errorMessage, value); }
+		}
+
+		public string SuccessMessage
+		{
+			get { return _successMessage; }
+			set { SetProperty(ref _successMessage, value); }
 		}
 
 		public ICommand AddCommand
@@ -53,14 +61,27 @@ namespace Comptroller.Core.ViewModels
 		private void OnActionFailed(RepositoryActionFailed<IInstituteRepository> message)
 		{
 			ErrorMessage = message.GetMessage();
+			var t = Task.Delay(_messageDelay);
+			Task.Factory.ContinueWhenAll(new[] { t }, (tasks) => ErrorMessage = "");
+		}
+
+		private void OnRepoChanged(RepositoryChangedMessage<IInstituteRepository> message)
+		{
+			if (message.Method != "add") return;
+			SuccessMessage = "Институт был успешно добавлен";
+			var t =  Task.Delay(_messageDelay);
+			Task.Factory.ContinueWhenAll(new []{t}, (tasks) => SuccessMessage = "");
 		}
 
 		private string _instituteName;
 		private string _errorMessage;
+		private string _successMessage;
 
 		private readonly IInstituteRepository _instituteRepository;
 		private ICommand _addCommand;
 		private MvxSubscriptionToken _token;
-		
+
+
+		private const int _messageDelay = 2500;
 	}
 }

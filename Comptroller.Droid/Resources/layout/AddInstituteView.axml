@@ -21,6 +21,13 @@
         android:id="@+id/textView1"
         android:textColor="#aa1010"
         local:MvxBind="Text ErrorMessage"/>
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:textColor="#dddddd"
+        local:MvxBind="Text SuccessMessage"/>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
