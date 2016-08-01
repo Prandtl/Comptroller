@@ -27,7 +27,10 @@ namespace Comptroller.Core.Repositories
 			if (all != null)
 			{
 				if (all.Select(x => x.Name).Contains(newInstitute.Name))
+				{
 					_messenger.Publish(new RepositoryActionFailed<IInstituteRepository>(this, this, $"Institute with name '{newInstitute.Name}' already exists."));
+					return;
+				}
 			}
 			_dataManager.Add(newInstitute);
 			_messenger.Publish(new RepositoryChangedMessage<IInstituteRepository>(this, this, "add"));
@@ -39,7 +42,10 @@ namespace Comptroller.Core.Repositories
 			if (all != null)
 			{
 				if (all.Select(x => x.Name).Contains(institute.Name))
+				{
 					_messenger.Publish(new RepositoryActionFailed<IInstituteRepository>(this, this, $"Institute with name '{institute.Name}' already exists."));
+					return;
+				}
 			}
 			_dataManager.Update(institute);
 			_messenger.Publish(new RepositoryChangedMessage<IInstituteRepository>(this, this, "update"));

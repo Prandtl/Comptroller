@@ -9,11 +9,18 @@ namespace Comptroller.Core.Messages
 		public RepositoryActionFailed(object sender, TRepository repository, string message) : base(sender)
 		{
 			Repository = repository;
-			Message = message;
+			_message = message;
+		}
+
+		public string GetMessage()
+		{
+			return _message;
 		}
 
 		public TRepository Repository { get; private set; }
-		public string Message { get; private set; }
+
+
+		private readonly string _message;
 
 	}
 }

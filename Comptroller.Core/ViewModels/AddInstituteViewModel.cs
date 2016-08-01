@@ -1,15 +1,18 @@
 using System.Windows.Input;
+using Comptroller.Core.Messages;
 using Comptroller.Core.Models;
 using Comptroller.Core.Repositories;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.Messenger;
 
 namespace Comptroller.Core.ViewModels
 {
 	class AddInstituteViewModel : MvxViewModel
 	{
-		public AddInstituteViewModel(IInstituteRepository instituteRepository)
+		public AddInstituteViewModel(IInstituteRepository instituteRepository, IMvxMessenger messenger)
 		{
 			_instituteRepository = instituteRepository;
+			_token = messenger.Subscribe<RepositoryActionFailed<IInstituteRepository>>(OnActionFailed);
 		}
 
 		public string InstituteName
@@ -18,10 +21,10 @@ namespace Comptroller.Core.ViewModels
 			set { SetProperty(ref _instituteName, value); }
 		}
 
-		public Institute Institute
+		public string ErrorMessage
 		{
-			get { return _institute; }
-			set { SetProperty(ref _institute, value); }
+			get { return _errorMessage; }
+			set { SetProperty(ref _errorMessage, value); }
 		}
 
 		public ICommand AddCommand
@@ -47,10 +50,17 @@ namespace Comptroller.Core.ViewModels
 			_instituteRepository.Add(newInstitute);
 		}
 
+		private void OnActionFailed(RepositoryActionFailed<IInstituteRepository> message)
+		{
+			ErrorMessage = message.GetMessage();
+		}
+
 		private string _instituteName;
-		private Institute _institute;
+		private string _errorMessage;
 
 		private readonly IInstituteRepository _instituteRepository;
 		private ICommand _addCommand;
+		private MvxSubscriptionToken _token;
+		
 	}
 }

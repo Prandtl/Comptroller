@@ -115,14 +115,14 @@
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\AddInstitueView.cs" />
-    <Compile Include="Views\FirstView.cs" />
+    <Compile Include="Views\InstituteListView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
-    <AndroidResource Include="Resources\layout\FirstView.axml" />
+    <AndroidResource Include="Resources\layout\InstituteListView.axml" />
     <AndroidResource Include="Resources\layout\AddInstituteView.axml" />
   </ItemGroup>
   <ItemGroup>

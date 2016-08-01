@@ -45,7 +45,7 @@
     <Compile Include="Repositories\InstituteRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="ViewModels\AddInstituteViewModel.cs" />
-    <Compile Include="ViewModels\FirstViewModel.cs" />
+    <Compile Include="ViewModels\InstituteListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">

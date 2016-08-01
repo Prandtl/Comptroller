@@ -21,7 +21,7 @@ namespace Comptroller.Core
 				.AsInterfaces()
 				.RegisterAsLazySingleton();
 
-			RegisterAppStart<ViewModels.AddInstituteViewModel>();
+			RegisterAppStart<ViewModels.InstituteListViewModel>();
 		}
 	}
 }
