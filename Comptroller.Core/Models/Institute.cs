@@ -6,7 +6,7 @@ namespace Comptroller.Core.Models
 	{
 		[PrimaryKey, AutoIncrement]
 		public int Id { get; set; }
-		[NotNull]
+		[NotNull, Unique]
 		public string Name { get; set; }
 	}
 }

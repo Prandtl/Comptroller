@@ -66,10 +66,10 @@ namespace Comptroller.Tests
 		{
 			var institute1 = new Institute { Id = 0, Name = "ИСПН" };
 			var institute2 = new Institute { Id = 0, Name = "ИСПН" };
+			var institutes = new List<Institute>() { institute1 };
 			var mockDataManager = new Mock<IDataManager<Institute>>();
+			mockDataManager.Setup(dm => dm.GetAll()).Returns(institutes);
 			_instituteRepository = new InstituteRepository(mockDataManager.Object);
-			_instituteRepository.Add(institute1);
-			mockDataManager.Verify(dm => dm.Add(It.Is<Institute>(inst => inst == institute1)));
 			Assert.Throws<Exception>(() => _instituteRepository.Add(institute2));
 		}
 

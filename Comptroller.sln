@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comptroller.Core", "Comptro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comptroller.Tests", "Comptroller.Tests\Comptroller.Tests.csproj", "{8513911A-7AD3-40CA-8CC8-9086E81C9A08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comptroller.Droid", "Comptroller.Droid\Comptroller.Droid.csproj", "{77698536-1494-4934-A4BB-B422ADCB1321}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{8513911A-7AD3-40CA-8CC8-9086E81C9A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8513911A-7AD3-40CA-8CC8-9086E81C9A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8513911A-7AD3-40CA-8CC8-9086E81C9A08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77698536-1494-4934-A4BB-B422ADCB1321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77698536-1494-4934-A4BB-B422ADCB1321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77698536-1494-4934-A4BB-B422ADCB1321}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{77698536-1494-4934-A4BB-B422ADCB1321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77698536-1494-4934-A4BB-B422ADCB1321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77698536-1494-4934-A4BB-B422ADCB1321}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

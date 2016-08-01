@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Comptroller.Core.DataManagers;
 using Comptroller.Core.Models;
 
@@ -18,6 +20,8 @@ namespace Comptroller.Core.Repositories
 
 		public void Add(Institute newInstitute)
 		{
+			if(GetAll().Select(x=>x.Name).Contains(newInstitute.Name))
+				throw new Exception("Institute name is not unique");
 			_dataManager.Add(newInstitute);
 		}
 

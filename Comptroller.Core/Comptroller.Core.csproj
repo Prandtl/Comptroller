@@ -41,6 +41,7 @@
     <Compile Include="DataManagers\IDataManager.cs" />
     <Compile Include="Repositories\IInstituteRepository.cs" />
     <Compile Include="Repositories\InstituteRepository.cs" />
+    <Compile Include="ViewModels\AddInstituteViewModel.cs" />
     <Compile Include="ViewModels\FirstViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
