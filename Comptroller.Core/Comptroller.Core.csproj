@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Messages\RepositoryActionFailed.cs" />
     <Compile Include="Messages\RepositoryChangedMessage.cs" />
     <Compile Include="Models\Institute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

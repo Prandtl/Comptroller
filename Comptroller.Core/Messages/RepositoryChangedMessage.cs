@@ -4,7 +4,7 @@ using MvvmCross.Plugins.Messenger;
 
 namespace Comptroller.Core.Messages
 {
-	public class RepositoryChangedMessage<TRepository> : MvxMessage where TRepository:IRepository
+	public class RepositoryChangedMessage<TRepository> : MvxMessage where TRepository : IRepository
 	{
 		public RepositoryChangedMessage(object sender, TRepository changedRepository, string method) : base(sender)
 		{
@@ -12,7 +12,7 @@ namespace Comptroller.Core.Messages
 			Repository = changedRepository;
 		}
 
-		public string Method { get; set; }
-		public TRepository Repository { get; set; }
+		public string Method { get; private set; }
+		public TRepository Repository { get; private set; }
 	}
 }
