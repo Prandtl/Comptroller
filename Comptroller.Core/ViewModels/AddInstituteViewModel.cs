@@ -1,7 +1,7 @@
+using System.Windows.Input;
 using Comptroller.Core.Models;
 using Comptroller.Core.Repositories;
 using MvvmCross.Core.ViewModels;
-using MvvmCross.Plugins.Messenger;
 
 namespace Comptroller.Core.ViewModels
 {
@@ -24,9 +24,33 @@ namespace Comptroller.Core.ViewModels
 			set { SetProperty(ref _institute, value); }
 		}
 
+		public ICommand AddCommand
+		{
+			get
+			{
+				_addCommand = _addCommand ?? new MvxCommand(AddInstitute);
+				return _addCommand;
+			}
+		}
+
+		public ICommand GoBackCommand
+		{
+			get
+			{
+				return new MvxCommand(() => Close(this));
+			}
+		}
+
+		private void AddInstitute()
+		{
+			var newInstitute = new Institute() { Name = InstituteName };
+			_instituteRepository.Add(newInstitute);
+		}
+
 		private string _instituteName;
 		private Institute _institute;
 
-		private IInstituteRepository _instituteRepository;
+		private readonly IInstituteRepository _instituteRepository;
+		private ICommand _addCommand;
 	}
 }

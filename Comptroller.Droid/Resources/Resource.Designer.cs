@@ -47,6 +47,10 @@ namespace Comptroller.Droid
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView = global::Comptroller.Droid.Resource.Styleable.MvxListView;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::Comptroller.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::Comptroller.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
+			global::MvvmCross.Plugins.Sqlite.Droid.Resource.String.ApplicationName = global::Comptroller.Droid.Resource.String.ApplicationName;
+			global::MvvmCross.Plugins.Sqlite.Droid.Resource.String.Hello = global::Comptroller.Droid.Resource.String.Hello;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::Comptroller.Droid.Resource.String.ApplicationName;
+			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::Comptroller.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -105,11 +109,17 @@ namespace Comptroller.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int MvvmCrossTagId = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int MvvmCrossTagId = 2131034112;
 			
-			// aapt resource value: 0x7f040001
-			public const int MvxBindingTagUnique = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int MvxBindingTagUnique = 2131034113;
+			
+			// aapt resource value: 0x7f050003
+			public const int button1 = 2131034115;
+			
+			// aapt resource value: 0x7f050002
+			public const int button2 = 2131034114;
 			
 			static Id()
 			{
@@ -125,10 +135,13 @@ namespace Comptroller.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int FirstView = 2130903040;
+			public const int AddInstituteView = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int SplashScreen = 2130903041;
+			public const int FirstView = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int SplashScreen = 2130903042;
 			
 			static Layout()
 			{
@@ -143,11 +156,11 @@ namespace Comptroller.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int ApplicationName = 2131099649;
+			// aapt resource value: 0x7f040001
+			public const int ApplicationName = 2130968577;
 			
-			// aapt resource value: 0x7f060000
-			public const int Hello = 2131099648;
+			// aapt resource value: 0x7f040000
+			public const int Hello = 2130968576;
 			
 			static String()
 			{
@@ -162,8 +175,8 @@ namespace Comptroller.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int Theme_Splash = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int Theme_Splash = 2131099648;
 			
 			static Style()
 			{

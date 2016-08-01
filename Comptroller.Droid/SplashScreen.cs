@@ -5,9 +5,9 @@ using MvvmCross.Droid.Views;
 namespace Comptroller.Droid
 {
     [Activity(
-        Label = "Comptroller.Droid"
+        Label = "Comptroller"
         , MainLauncher = true
-        , Icon = "@mipmap/icon"
+        , Icon = "@drawable/icon"
         , Theme = "@style/Theme.Splash"
         , NoHistory = true
         , ScreenOrientation = ScreenOrientation.Portrait)]
