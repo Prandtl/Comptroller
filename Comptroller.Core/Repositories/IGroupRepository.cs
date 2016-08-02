@@ -3,7 +3,7 @@ using Comptroller.Core.Models;
 
 namespace Comptroller.Core.Repositories
 {
-	public interface IGroupRepository : IRepository
+	public interface IGroupRepository : IRepository<Group>
 	{
 		List<Group> GetAll();
 		void Add(Group newGroup);

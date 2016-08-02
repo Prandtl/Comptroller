@@ -1,6 +1,6 @@
 ﻿namespace Comptroller.Core.Repositories
 {
-	public interface IRepository
+	public interface IRepository<T>
 	{
 		 
 	}

@@ -3,10 +3,10 @@ using MvvmCross.Plugins.Messenger;
 
 namespace Comptroller.Core.Messages
 {
-	public class RepositoryActionFailed<TRepository>:MvxMessage where TRepository:IRepository
+	public class RepositoryActionFailed<T>:MvxMessage
 	{
 
-		public RepositoryActionFailed(object sender, TRepository repository, string message) : base(sender)
+		public RepositoryActionFailed(object sender, IRepository<T> repository, string message) : base(sender)
 		{
 			Repository = repository;
 			_message = message;
@@ -17,7 +17,7 @@ namespace Comptroller.Core.Messages
 			return _message;
 		}
 
-		public TRepository Repository { get; private set; }
+		public IRepository<T> Repository { get; private set; }
 
 
 		private readonly string _message;

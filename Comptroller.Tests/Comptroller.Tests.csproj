@@ -97,6 +97,7 @@
     <Compile Include="GroupRepositoryTests.cs" />
     <Compile Include="InstituteRepositoryTests.cs" />
     <Compile Include="MockDispatcher.cs" />
+    <Compile Include="PersistencyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
