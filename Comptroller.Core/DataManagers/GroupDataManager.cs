@@ -1,28 +1,39 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Comptroller.Core.Models;
+using MvvmCross.Plugins.Sqlite;
+using SQLite.Net;
 
 namespace Comptroller.Core.DataManagers
 {
 	public class GroupDataManager:IDataManager<Group>
 	{
+		public GroupDataManager(IMvxSqliteConnectionFactory factory)
+		{
+			_connection = factory.GetConnection("comptroller.sql");
+			_connection.CreateTable<Group>();
+		}
 		public List<Group> GetAll()
 		{
-			throw new System.NotImplementedException();
+			var groups = _connection.Table<Group>().OrderBy(x=>x.Id).ToList();
+			return groups;
 		}
 
 		public void Add(Group item)
 		{
-			throw new System.NotImplementedException();
+			_connection.Insert(item);
 		}
 
 		public void Update(Group item)
 		{
-			throw new System.NotImplementedException();
+			_connection.Update(item);
 		}
 
 		public void Delete(Group item)
 		{
-			throw new System.NotImplementedException();
+			_connection.Delete(item);
 		}
+
+		private SQLiteConnection _connection;
 	}
 }
