@@ -58,6 +58,26 @@ namespace Comptroller.Tests
 			_dataManagerMock.Verify(dm => dm.Add(It.Is<Group>(g => g == _groups[0])));
 		}
 
+		[Test]
+		public void ShouldPassIfRepositoryDeletesItemFromDataManager()
+		{
+			//arrange
+			//act
+			_groupRepository.Delete(_groups[0]);
+			//assert
+			_dataManagerMock.Verify(dm=>dm.Delete(It.IsAny<Group>()));
+		}
+
+		[Test]
+		public void ShouldPassIfRepositoryUpdatesItemInDataManager()
+		{
+			//arrange
+			//act
+			_groupRepository.Update(_groups[0]);
+			//assert
+			_dataManagerMock.Verify(dm=>dm.Update(It.IsAny<Group>()));
+		}
+
 		private IGroupRepository _groupRepository;
 		private Mock<IDataManager<Group>> _dataManagerMock;
 		private List<Institute> _institutes;
