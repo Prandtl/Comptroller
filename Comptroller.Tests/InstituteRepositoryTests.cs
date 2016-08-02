@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace Comptroller.Tests
 {
 	[TestFixture]
-	public class InstituteRepositoryShould : MvxIoCSupportingTest
+	public class InstituteRepositoryTests : MvxIoCSupportingTest
 	{
 		[SetUp]
 		public void SetupMethod()
@@ -21,9 +21,9 @@ namespace Comptroller.Tests
 			_messengerMock = new Mock<IMvxMessenger>();
 			_instituteRepository = new InstituteRepository(_instituteDmMock.Object, _messengerMock.Object);
 		}
-		
+
 		[Test]
-		public void BeAbleToPutElements()
+		public void ShouldPassIfRepositoryAddsToDataManager()
 		{
 			var institute = new Institute { Name = "ИМКН" };
 			_instituteRepository.Add(institute);
@@ -31,7 +31,7 @@ namespace Comptroller.Tests
 		}
 
 		[Test]
-		public void BeAbleToGetAllElements()
+		public void ShouldPassIfRepositoryReturnsEverythingFromDataManager()
 		{
 			var institute1 = new Institute { Id = 1, Name = "ИМКН" };
 			var institute2 = new Institute { Id = 1, Name = "ИСПН" };
@@ -45,7 +45,7 @@ namespace Comptroller.Tests
 		}
 
 		[Test]
-		public void BeAbleToDeleteAnElement()
+		public void ShouldPassIfRepositoryDeletesElementFromDataManager()
 		{
 			var institute = new Institute { Id = 1, Name = "ИСПН" };
 			_instituteRepository.Delete(institute);
@@ -53,7 +53,7 @@ namespace Comptroller.Tests
 		}
 
 		[Test]
-		public void BeAbleToUpdateAnItem()
+		public void ShouldPassIfRepositoryUpdatesItemInDataManager()
 		{
 			const int id = 1;
 			var institute = new Institute { Id = 1, Name = "ИСПН" };
@@ -63,29 +63,29 @@ namespace Comptroller.Tests
 		}
 
 		[Test]
-		public void NotAddTwoInstitutesWithSameName()
+		public void ShouldPassIfDataManagerDoesentAddItem()
 		{
 			var institute1 = new Institute { Id = 0, Name = "ИСПН" };
 			var institute2 = new Institute { Id = 0, Name = "ИСПН" };
 			var institutes = new List<Institute> { institute1 };
 			_instituteDmMock.Setup(dm => dm.GetAll()).Returns(institutes);
 			_instituteRepository.Add(institute2);
-			_messengerMock.Verify(mess=>mess.Publish(It.IsAny<RepositoryActionFailed<IInstituteRepository>>()));
+			_instituteDmMock.Verify(dm => dm.Add(It.IsAny<Institute>()), Times.Never);
 		}
 
 		[Test]
-		public void NotUpdateNameIfItAlreadyExists()
+		public void ShouldPassIfDataManagerDoesntUpdateItem()
 		{
 			var institute1 = new Institute { Id = 0, Name = "ИСПН" };
 			var institute2 = new Institute { Id = 0, Name = "ИСПН" };
 			var institutes = new List<Institute> { institute1 };
 			_instituteDmMock.Setup(dm => dm.GetAll()).Returns(institutes);
 			_instituteRepository.Update(institute2);
-			_messengerMock.Verify(mess=>mess.Publish(It.IsAny<RepositoryActionFailed<IInstituteRepository>>()));
+			_instituteDmMock.Verify(dm => dm.Update(It.IsAny<Institute>()), Times.Never);
 		}
 
 		[Test]
-		public void SendARepositoryChangedMessageOnChange()
+		public void ShouldPassIfMessageIsSentOnDataChange()
 		{
 			_instituteRepository.Add(new Institute());
 			_instituteRepository.Update(new Institute());

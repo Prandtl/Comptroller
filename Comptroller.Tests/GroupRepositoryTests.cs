@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace Comptroller.Tests
 {
 	[TestFixture]
-	public class GroupRepositoryShould : MvxIoCSupportingTest
+	public class GroupRepositoryTests : MvxIoCSupportingTest
 	{
 		[SetUp]
 		public void SetupMethod()
@@ -35,7 +35,7 @@ namespace Comptroller.Tests
 		}
 
 		[Test]
-		public void BeAbleToGetAllGroups()
+		public void ShouldFailIfRepositoryCantGetElements()
 		{
 			//arrange
 			_dataManagerMock.Setup(dm => dm.GetAll()).Returns(_groups);
@@ -49,7 +49,7 @@ namespace Comptroller.Tests
 		}
 
 		[Test]
-		public void BeAbleToAddNewGroup()
+		public void ShouldPassIfRepositoryAddsElementToDataManager()
 		{
 			//arrange
 			//act
