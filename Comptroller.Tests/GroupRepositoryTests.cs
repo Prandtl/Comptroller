@@ -52,6 +52,7 @@ namespace Comptroller.Tests
 		public void ShouldPassIfRepositoryAddsElementToDataManager()
 		{
 			//arrange
+			_dataManagerMock.Setup(dm => dm.GetAll()).Returns(new List<Group>());
 			//act
 			_groupRepository.Add(_groups[0]);
 			//assert
@@ -72,6 +73,7 @@ namespace Comptroller.Tests
 		public void ShouldPassIfRepositoryUpdatesItemInDataManager()
 		{
 			//arrange
+			_dataManagerMock.Setup(dm => dm.GetAll()).Returns(new List<Group>());
 			//act
 			_groupRepository.Update(_groups[0]);
 			//assert

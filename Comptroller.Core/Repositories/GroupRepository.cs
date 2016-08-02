@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Comptroller.Core.DataManagers;
 using Comptroller.Core.Models;
 
@@ -17,17 +18,26 @@ namespace Comptroller.Core.Repositories
 
 		public void Add(Group newGroup)
 		{
+			if (GroupHasADuplicate(newGroup))
+				return;
 			_dm.Add(newGroup);
 		}
 
 		public void Update(Group group)
 		{
+			if(GroupHasADuplicate(group))
+				return;
 			_dm.Update(group);
 		}
 
 		public void Delete(Group group)
 		{
 			_dm.Delete(group);
+		}
+
+		private bool GroupHasADuplicate(Group group)
+		{
+			return GetAll().Where(g => g.InstituteId == group.InstituteId).Any(g => g.Name.Equals(group.Name));
 		}
 
 		private IDataManager<Group> _dm;
