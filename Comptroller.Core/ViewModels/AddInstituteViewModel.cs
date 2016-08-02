@@ -67,7 +67,7 @@ namespace Comptroller.Core.ViewModels
 
 		private void OnRepoChanged(RepositoryChangedMessage<IInstituteRepository> message)
 		{
-			if (message.Method != "add") return;
+			if (message.Method != Method.Add) return;
 			SuccessMessage = "Институт был успешно добавлен";
 			var t =  Task.Delay(MessageDelay);
 			Task.Factory.ContinueWhenAll(new []{t}, (tasks) => SuccessMessage = "");

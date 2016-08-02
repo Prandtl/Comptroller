@@ -17,7 +17,7 @@ namespace Comptroller.Core.Services
 
 		public void OnDeletedInstitute(RepositoryChangedMessage<Institute> message)
 		{
-			if (message.Method != "delete") //todo:превести методы датамэнеджера в енум
+			if (message.Method != Method.Delete)
 				return;
 			var id = message.ChangedItem.Id;
 			var toDelete = _groupRepository.GetAll().Where(g => g.InstituteId == id);//todo:метод который возвращает все группы из данного института

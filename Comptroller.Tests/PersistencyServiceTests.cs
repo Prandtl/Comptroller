@@ -56,7 +56,7 @@ namespace Comptroller.Tests
 			_dataManagerGroupMock.Setup(mq => mq.GetAll()).Returns(_groups);
 			var persistencyService = new PersistencyService(_messengerMoq.Object, _groupRepository);
 
-			persistencyService.OnDeletedInstitute(new RepositoryChangedMessage<Institute>(_instituteRepository,_instituteRepository,"delete",_institutes[1]));
+			persistencyService.OnDeletedInstitute(new RepositoryChangedMessage<Institute>(_instituteRepository,_instituteRepository,Method.Delete, _institutes[1]));
 			_dataManagerGroupMock.Verify(mq => mq.Delete(It.Is<Group>(gr => gr.InstituteId == 1)), Times.Exactly(3));
 
 		}

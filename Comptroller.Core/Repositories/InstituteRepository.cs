@@ -32,7 +32,7 @@ namespace Comptroller.Core.Repositories
 				}
 			}
 			_dataManager.Add(newInstitute);
-			_messenger.Publish(new RepositoryChangedMessage<Institute>(this, this, "add", newInstitute));
+			_messenger.Publish(new RepositoryChangedMessage<Institute>(this, this, Method.Add, newInstitute));
 		}
 
 		public void Update(Institute institute)
@@ -47,13 +47,13 @@ namespace Comptroller.Core.Repositories
 				}
 			}
 			_dataManager.Update(institute);
-			_messenger.Publish(new RepositoryChangedMessage<Institute>(this, this, "update", institute));
+			_messenger.Publish(new RepositoryChangedMessage<Institute>(this, this, Method.Update, institute));
 		}
 
 		public void Delete(Institute institute)
 		{
 			_dataManager.Delete(institute);
-			_messenger.Publish(new RepositoryChangedMessage<Institute>(this, this, "delete", institute));
+			_messenger.Publish(new RepositoryChangedMessage<Institute>(this, this, Method.Delete, institute));
 		}
 
 		private readonly IDataManager<Institute> _dataManager;
