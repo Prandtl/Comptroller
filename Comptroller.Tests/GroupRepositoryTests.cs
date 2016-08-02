@@ -78,6 +78,30 @@ namespace Comptroller.Tests
 			_dataManagerMock.Verify(dm=>dm.Update(It.IsAny<Group>()));
 		}
 
+		[Test]
+		public void ShouldPassIfGroupWasNotAddedInDataManager()
+		{
+			_dataManagerMock.Setup(dm => dm.GetAll()).Returns(_groups);
+			//arrange
+			var group = new Group() {Id = 6, InstituteId = 0, Name = "ПИ-301"};
+			//act
+			_groupRepository.Add(group);
+			//assert
+			_dataManagerMock.Verify(dm=>dm.Add(It.Is<Group>(gr=>gr==group)),Times.Never);
+		}
+
+		[Test]
+		public void ShouldPassIfGroupWasNotUpdatedInDataManager()
+		{
+			_dataManagerMock.Setup(dm => dm.GetAll()).Returns(_groups);
+			//arrange
+			var group = new Group() { Id = 6, InstituteId = 0, Name = "ПИ-301" };
+			//act
+			_groupRepository.Update(group);
+			//assert
+			_dataManagerMock.Verify(dm => dm.Update(It.Is<Group>(gr => gr == group)), Times.Never);
+		}
+
 		private IGroupRepository _groupRepository;
 		private Mock<IDataManager<Group>> _dataManagerMock;
 		private List<Institute> _institutes;
