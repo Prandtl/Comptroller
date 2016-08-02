@@ -17,7 +17,7 @@ namespace Comptroller.Core.Repositories
 
 		public void Add(Group newInstitute)
 		{
-			throw new System.NotImplementedException();
+			_dm.Add(newInstitute);
 		}
 
 		public void Update(Group institute)
