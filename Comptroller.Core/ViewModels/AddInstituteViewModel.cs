@@ -61,7 +61,7 @@ namespace Comptroller.Core.ViewModels
 		private void OnActionFailed(RepositoryActionFailed<IInstituteRepository> message)
 		{
 			ErrorMessage = message.GetMessage();
-			var t = Task.Delay(_messageDelay);
+			var t = Task.Delay(MessageDelay);
 			Task.Factory.ContinueWhenAll(new[] { t }, (tasks) => ErrorMessage = "");
 		}
 
@@ -69,7 +69,7 @@ namespace Comptroller.Core.ViewModels
 		{
 			if (message.Method != "add") return;
 			SuccessMessage = "Институт был успешно добавлен";
-			var t =  Task.Delay(_messageDelay);
+			var t =  Task.Delay(MessageDelay);
 			Task.Factory.ContinueWhenAll(new []{t}, (tasks) => SuccessMessage = "");
 		}
 
@@ -82,6 +82,6 @@ namespace Comptroller.Core.ViewModels
 		private MvxSubscriptionToken _token;
 
 
-		private const int _messageDelay = 2500;
+		private const int MessageDelay = 2500;
 	}
 }
