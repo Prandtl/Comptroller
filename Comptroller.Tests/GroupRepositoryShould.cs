@@ -1,0 +1,54 @@
+﻿using System.Collections.Generic;
+using Comptroller.Core.DataManagers;
+using Comptroller.Core.Models;
+using Comptroller.Core.Repositories;
+using Moq;
+using MvvmCross.Test.Core;
+using NUnit.Framework;
+
+namespace Comptroller.Tests
+{
+	[TestFixture]
+	public class GroupRepositoryShould : MvxIoCSupportingTest
+	{
+		[SetUp]
+		public void SetupMethod()
+		{
+			Setup();
+
+			_dataManagerMock = new Mock<IDataManager<Group>>();
+
+			_groupRepository = new GroupRepository(_dataManagerMock.Object);
+
+			var institute1 = new Institute { Id = 0, Name = "ИМКН" };
+			var institute2 = new Institute { Id = 1, Name = "ИСПН" };
+			var institute3 = new Institute { Id = 2, Name = "ИЕН" };
+			_institutes = new List<Institute>() { institute1, institute2, institute3 };
+
+			var group11 = new Group { Id = 0, InstituteId = 0, Name = "ПИ-301" };
+			var group12 = new Group { Id = 1, InstituteId = 0, Name = "ФИ-301" };
+			var group21 = new Group { Id = 2, InstituteId = 1, Name = "ЗК-301" };
+			var group22 = new Group { Id = 3, InstituteId = 1, Name = "ЛТ-301" };
+			var group23 = new Group { Id = 4, InstituteId = 1, Name = "ФБ-301" };
+			var group31 = new Group { Id = 5, InstituteId = 2, Name = "НЗ-301" };
+			_groups = new List<Group> {group11, group12, group21, group22, group23, group31};
+		}
+
+		[Test]
+		public void BeAbleToGetAllGroups()
+		{
+			_dataManagerMock.Setup(dm => dm.GetAll()).Returns(_groups);
+			//assert
+			var result = _groupRepository.GetAll();
+			foreach (var group in _groups)
+			{
+				Assert.Contains(group,result);
+			}
+		}
+
+		private IGroupRepository _groupRepository;
+		private Mock<IDataManager<Group>> _dataManagerMock;
+		private List<Institute> _institutes;
+		private List<Group> _groups;
+	}
+}
