@@ -25,12 +25,12 @@ namespace Comptroller.Tests
 			var institute3 = new Institute { Id = 2, Name = "ИЕН" };
 			_institutes = new List<Institute>() { institute1, institute2, institute3 };
 
-			var group11 = new Group { Id = 0, InstituteId = 0, Name = "ПИ-301" };
-			var group12 = new Group { Id = 1, InstituteId = 0, Name = "ФИ-301" };
-			var group21 = new Group { Id = 2, InstituteId = 1, Name = "ЗК-301" };
-			var group22 = new Group { Id = 3, InstituteId = 1, Name = "ЛТ-301" };
-			var group23 = new Group { Id = 4, InstituteId = 1, Name = "ФБ-301" };
-			var group31 = new Group { Id = 5, InstituteId = 2, Name = "НЗ-301" };
+			var group11 = new Group("ПИ-301", institute1);
+			var group12 = new Group("ФИ-301", institute1);
+			var group21 = new Group("ЗК-301", institute1);
+			var group22 = new Group("ЛТ-301", institute1);
+			var group23 = new Group("ФБ-301", institute1);
+			var group31 = new Group("НЗ-301", institute1);
 			_groups = new List<Group> { group11, group12, group21, group22, group23, group31 };
 		}
 
@@ -66,7 +66,7 @@ namespace Comptroller.Tests
 			//act
 			_groupRepository.Delete(_groups[0]);
 			//assert
-			_dataManagerMock.Verify(dm=>dm.Delete(It.IsAny<Group>()));
+			_dataManagerMock.Verify(dm => dm.Delete(It.IsAny<Group>()));
 		}
 
 		[Test]
@@ -77,7 +77,7 @@ namespace Comptroller.Tests
 			//act
 			_groupRepository.Update(_groups[0]);
 			//assert
-			_dataManagerMock.Verify(dm=>dm.Update(It.IsAny<Group>()));
+			_dataManagerMock.Verify(dm => dm.Update(It.IsAny<Group>()));
 		}
 
 		[Test]
@@ -85,11 +85,11 @@ namespace Comptroller.Tests
 		{
 			_dataManagerMock.Setup(dm => dm.GetAll()).Returns(_groups);
 			//arrange
-			var group = new Group() {Id = 6, InstituteId = 0, Name = "ПИ-301"};
+			var group = new Group("ПИ-301", _institutes[0]);
 			//act
 			_groupRepository.Add(group);
 			//assert
-			_dataManagerMock.Verify(dm=>dm.Add(It.Is<Group>(gr=>gr==group)),Times.Never);
+			_dataManagerMock.Verify(dm => dm.Add(It.Is<Group>(gr => gr == group)), Times.Never);
 		}
 
 		[Test]
@@ -97,7 +97,7 @@ namespace Comptroller.Tests
 		{
 			_dataManagerMock.Setup(dm => dm.GetAll()).Returns(_groups);
 			//arrange
-			var group = new Group() { Id = 6, InstituteId = 0, Name = "ПИ-301" };
+			var group = new Group("ПИ-301", _institutes[0]);
 			//act
 			_groupRepository.Update(group);
 			//assert
