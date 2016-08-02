@@ -31,19 +31,31 @@ namespace Comptroller.Tests
 			var group22 = new Group { Id = 3, InstituteId = 1, Name = "ЛТ-301" };
 			var group23 = new Group { Id = 4, InstituteId = 1, Name = "ФБ-301" };
 			var group31 = new Group { Id = 5, InstituteId = 2, Name = "НЗ-301" };
-			_groups = new List<Group> {group11, group12, group21, group22, group23, group31};
+			_groups = new List<Group> { group11, group12, group21, group22, group23, group31 };
 		}
 
 		[Test]
 		public void BeAbleToGetAllGroups()
 		{
+			//arrange
 			_dataManagerMock.Setup(dm => dm.GetAll()).Returns(_groups);
-			//assert
+			//act
 			var result = _groupRepository.GetAll();
+			//assert
 			foreach (var group in _groups)
 			{
-				Assert.Contains(group,result);
+				Assert.Contains(group, result);
 			}
+		}
+
+		[Test]
+		public void BeAbleToAddNewGroup()
+		{
+			//arrange
+			//act
+			_groupRepository.Add(_groups[0]);
+			//assert
+			_dataManagerMock.Verify(dm => dm.Add(It.Is<Group>(g => g == _groups[0])));
 		}
 
 		private IGroupRepository _groupRepository;
