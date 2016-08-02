@@ -15,19 +15,19 @@ namespace Comptroller.Core.Repositories
 			return _dm.GetAll();
 		}
 
-		public void Add(Group newInstitute)
+		public void Add(Group newGroup)
 		{
-			_dm.Add(newInstitute);
+			_dm.Add(newGroup);
 		}
 
-		public void Update(Group institute)
+		public void Update(Group group)
 		{
-			throw new System.NotImplementedException();
+			_dm.Update(group);
 		}
 
-		public void Delete(Group institute)
+		public void Delete(Group group)
 		{
-			throw new System.NotImplementedException();
+			_dm.Delete(group);
 		}
 
 		private IDataManager<Group> _dm;

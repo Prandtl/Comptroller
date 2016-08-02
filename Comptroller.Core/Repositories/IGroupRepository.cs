@@ -6,8 +6,8 @@ namespace Comptroller.Core.Repositories
 	public interface IGroupRepository : IRepository
 	{
 		List<Group> GetAll();
-		void Add(Group newInstitute);
-		void Update(Group institute);
-		void Delete(Group institute);
+		void Add(Group newGroup);
+		void Update(Group group);
+		void Delete(Group group);
 	}
 }
