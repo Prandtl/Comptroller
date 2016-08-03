@@ -51,6 +51,7 @@
     <Compile Include="Services\IPersistencyService.cs" />
     <Compile Include="Services\PersistencyService.cs" />
     <Compile Include="ViewModels\AddInstituteViewModel.cs" />
+    <Compile Include="ViewModels\InstituteDetailsViewModel.cs" />
     <Compile Include="ViewModels\InstituteListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

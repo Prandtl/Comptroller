@@ -16,6 +16,14 @@ namespace Comptroller.Core.Repositories
 			return _dm.GetAll();
 		}
 
+		public List<Group> GetAllFrom(Institute institute)
+		{
+			var result = GetAll()
+				.Where(g => g.InstituteId == institute.Id)
+				.ToList();
+			return result;
+		}
+
 		public void Add(Group newGroup)
 		{
 			if (GroupHasADuplicate(newGroup))
@@ -40,6 +48,6 @@ namespace Comptroller.Core.Repositories
 			return GetAll().Where(g => g.InstituteId == group.InstituteId).Any(g => g.Name.Equals(group.Name));
 		}
 
-		private IDataManager<Group> _dm;
+		private readonly IDataManager<Group> _dm;
 	}
 }

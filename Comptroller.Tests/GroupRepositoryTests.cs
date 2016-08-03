@@ -27,10 +27,10 @@ namespace Comptroller.Tests
 
 			var group11 = new Group("ПИ-301", institute1);
 			var group12 = new Group("ФИ-301", institute1);
-			var group21 = new Group("ЗК-301", institute1);
-			var group22 = new Group("ЛТ-301", institute1);
-			var group23 = new Group("ФБ-301", institute1);
-			var group31 = new Group("НЗ-301", institute1);
+			var group21 = new Group("ЗК-301", institute2);
+			var group22 = new Group("ЛТ-301", institute2);
+			var group23 = new Group("ФБ-301", institute2);
+			var group31 = new Group("НЗ-301", institute3);
 			_groups = new List<Group> { group11, group12, group21, group22, group23, group31 };
 		}
 
@@ -102,6 +102,19 @@ namespace Comptroller.Tests
 			_groupRepository.Update(group);
 			//assert
 			_dataManagerMock.Verify(dm => dm.Update(It.Is<Group>(gr => gr == group)), Times.Never);
+		}
+
+		[Test]
+		public void ShouldPassIfRepositoryReturnsAllGroupsFromSpecificInstitute()
+		{
+			//arrange
+			_dataManagerMock.Setup(moq => moq.GetAll()).Returns(_groups);
+			//act
+			var result = _groupRepository.GetAllFrom(_institutes[1]);
+			//assert
+			Assert.Contains(_groups[2], result);
+			Assert.Contains(_groups[3], result);
+			Assert.Contains(_groups[4], result);
 		}
 
 		private IGroupRepository _groupRepository;
