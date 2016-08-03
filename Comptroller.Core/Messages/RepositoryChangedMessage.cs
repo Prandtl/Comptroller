@@ -17,12 +17,4 @@ namespace Comptroller.Core.Messages
 		public IRepository<T> Repository { get; private set; }
 		public T ChangedItem { get; private set; }
 	}
-
-	public enum Method
-	{
-		Delete,
-		Add,
-		Update,
-
-	}
 }

@@ -1,5 +1,6 @@
 using Android.App;
 using Android.Content.PM;
+using Comptroller.Droid.Resources;
 using MvvmCross.Droid.Views;
 
 namespace Comptroller.Droid

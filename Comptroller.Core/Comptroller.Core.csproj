@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="DataManagers\GroupDataManager.cs" />
+    <Compile Include="Messages\Method.cs" />
     <Compile Include="Messages\RepositoryActionFailed.cs" />
     <Compile Include="Messages\RepositoryChangedMessage.cs" />
     <Compile Include="Models\Group.cs" />
@@ -91,7 +92,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
