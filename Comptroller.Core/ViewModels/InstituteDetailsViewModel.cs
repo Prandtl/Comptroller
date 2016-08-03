@@ -1,26 +1,15 @@
 ﻿using System.Windows.Input;
+using Comptroller.Core.Models;
 using MvvmCross.Core.ViewModels;
 
 namespace Comptroller.Core.ViewModels
 {
 	public class InstituteDetailsViewModel : MvxViewModel
 	{
-		public string Name
+		public Institute Institute
 		{
-			get { return _name; }
-			set { SetProperty(ref _name, value); }
-		}
-
-		public int GroupCount
-		{
-			get { return _groupCount; }
-			set { SetProperty(ref _groupCount, value); }
-		}
-
-		public int StudentCount
-		{
-			get { return _studentCount; }
-			set { SetProperty(ref _studentCount, value); }
+			get { return _institute; }
+			set { SetProperty(ref _institute, value); }
 		}
 
 		public ICommand DeleteInstituteCommand
@@ -52,7 +41,7 @@ namespace Comptroller.Core.ViewModels
 
 		private void DeleteInstitute()
 		{
-			throw new System.NotImplementedException();
+			//todo:Alert?
 		}
 
 		private void ChangeInstituteName()
@@ -65,9 +54,7 @@ namespace Comptroller.Core.ViewModels
 			throw new System.NotImplementedException();
 		}
 
-		private string _name;
-		private int _groupCount;
-		private int _studentCount;
+		private Institute _institute;
 		private MvxCommand _deleteInstituteCommand;
 		private MvxCommand _changeInstituteNameCommand;
 		private MvxCommand _goBackCommand;
