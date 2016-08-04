@@ -8,7 +8,7 @@ namespace Comptroller.Core.ViewModels
 {
 	public class InstituteDetailsViewModel : MvxViewModel
 	{
-		public InstituteDetailsViewModel(IInstituteRepository repository,IUserDialogs dialogs)
+		public InstituteDetailsViewModel(IInstituteRepository repository, IUserDialogs dialogs)
 		{
 			_dialogs = dialogs;
 			_repository = repository;
@@ -22,6 +22,12 @@ namespace Comptroller.Core.ViewModels
 		public class Nav
 		{
 			public int Id { get; set; }
+		}
+
+		public string GroupCount
+		{
+			get { return _groupCount; }
+			set { SetProperty(ref _groupCount, value); }
 		}
 
 		public Institute Institute
@@ -94,5 +100,6 @@ namespace Comptroller.Core.ViewModels
 		private MvxCommand _goBackCommand;
 		private IUserDialogs _dialogs;
 		private IInstituteRepository _repository;
+		private string _groupCount;
 	}
 }

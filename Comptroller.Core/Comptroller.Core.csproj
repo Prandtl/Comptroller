@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Converters\InstituteToGroupCountValueConverter.cs" />
     <Compile Include="DataManagers\GroupDataManager.cs" />
     <Compile Include="Messages\RepositoryActionFailed.cs" />
     <Compile Include="Messages\RepositoryChangedMessage.cs" />
