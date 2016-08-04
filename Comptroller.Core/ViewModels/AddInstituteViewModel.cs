@@ -13,8 +13,8 @@ namespace Comptroller.Core.ViewModels
 		public AddInstituteViewModel(IInstituteRepository instituteRepository, IMvxMessenger messenger)
 		{
 			_instituteRepository = instituteRepository;
-			_token = messenger.Subscribe<RepositoryActionFailed<IInstituteRepository>>(OnActionFailed);
-			_token = messenger.Subscribe<RepositoryChangedMessage<IInstituteRepository>>(OnRepoChanged);
+			_token = messenger.Subscribe<RepositoryActionFailed<Institute>>(OnActionFailed);
+			_token = messenger.Subscribe<RepositoryChangedMessage<Institute>>(OnRepoChanged);
 		}
 
 		public string InstituteName
@@ -58,14 +58,14 @@ namespace Comptroller.Core.ViewModels
 			_instituteRepository.Add(newInstitute);
 		}
 
-		private void OnActionFailed(RepositoryActionFailed<IInstituteRepository> message)
+		private void OnActionFailed(RepositoryActionFailed<Institute> message)
 		{
 			ErrorMessage = message.GetMessage();
 			var t = Task.Delay(MessageDelay);
 			Task.Factory.ContinueWhenAll(new[] { t }, (tasks) => ErrorMessage = "");
 		}
 
-		private void OnRepoChanged(RepositoryChangedMessage<IInstituteRepository> message)
+		private void OnRepoChanged(RepositoryChangedMessage<Institute> message)
 		{
 			if (message.Method != Method.Add) return;
 			SuccessMessage = "Институт был успешно добавлен";

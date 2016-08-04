@@ -14,7 +14,7 @@ namespace Comptroller.Core.ViewModels
 		public InstituteListViewModel(IMvxMessenger messenger, IInstituteRepository repository)
 		{
 			_instituteRepository = repository;
-			_token = messenger.Subscribe<RepositoryChangedMessage<IInstituteRepository>>(OnChangedRepository);
+			_token = messenger.Subscribe<RepositoryChangedMessage<Institute>>(OnChangedRepository);
 			Refresh();
 		}
 
@@ -39,7 +39,7 @@ namespace Comptroller.Core.ViewModels
 			ShowViewModel<AddInstituteViewModel>();
 		}
 
-		private void OnChangedRepository(RepositoryChangedMessage<IInstituteRepository> obj)
+		private void OnChangedRepository(RepositoryChangedMessage<Institute> obj)
 		{
 			Refresh();
 		}

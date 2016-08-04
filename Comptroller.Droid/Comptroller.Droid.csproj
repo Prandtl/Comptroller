@@ -109,15 +109,12 @@
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\SqlitePluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
-    <Compile Include="InteractionRequests\InteractionRequestedEventArgs.cs" />
-    <Compile Include="InteractionRequests\IInteractionRequest.cs" />
-    <Compile Include="InteractionRequests\InteractionRequest.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
-    <Compile Include="Resources\Resource.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
-    <Compile Include="Views\AddInstituteView.cs" />
+    <Compile Include="Views\AddInstitueView.cs" />
     <Compile Include="Views\InstituteListView.cs" />
   </ItemGroup>
   <ItemGroup>

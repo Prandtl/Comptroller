@@ -90,7 +90,7 @@ namespace Comptroller.Tests
 			_instituteRepository.Add(new Institute());
 			_instituteRepository.Update(new Institute());
 			_instituteRepository.Delete(new Institute());
-			_messengerMock.Verify(mess => mess.Publish(It.IsAny<RepositoryChangedMessage<IInstituteRepository>>()), Times.Exactly(3));
+			_messengerMock.Verify(mess => mess.Publish(It.IsAny<RepositoryChangedMessage<Institute>>()), Times.Exactly(3));
 		}
 
 		private IInstituteRepository _instituteRepository;
