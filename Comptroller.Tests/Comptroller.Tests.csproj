@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="GroupRepositoryTests.cs" />
+    <Compile Include="InstituteAddViewModelTests.cs" />
     <Compile Include="InstituteRepositoryTests.cs" />
     <Compile Include="MockDispatcher.cs" />
     <Compile Include="PersistencyServiceTests.cs" />

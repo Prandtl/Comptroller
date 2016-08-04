@@ -8,7 +8,7 @@ using MvvmCross.Plugins.Messenger;
 
 namespace Comptroller.Core.ViewModels
 {
-	class AddInstituteViewModel : MvxViewModel
+	public class AddInstituteViewModel : MvxViewModel
 	{
 		public AddInstituteViewModel(IInstituteRepository instituteRepository, IMvxMessenger messenger)
 		{
