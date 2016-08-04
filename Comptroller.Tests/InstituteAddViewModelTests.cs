@@ -90,7 +90,7 @@ namespace Comptroller.Tests
 			//act
 			_viewModel.AddCommand.Execute(null);
 			//assert
-			_messengerMoq.Verify(moq=>moq.Publish(It.IsAny<RepositoryActionFailed<Institute>>()));
+			Assert.AreNotEqual(null, _viewModel.ErrorMessage);
 		}
 
 		[Test]
@@ -101,7 +101,7 @@ namespace Comptroller.Tests
 			//act
 			_viewModel.AddCommand.Execute(null);
 			//assert
-			_messengerMoq.Verify(moq => moq.Publish(It.IsAny<RepositoryActionFailed<Institute>>()));
+			Assert.AreNotEqual(null, _viewModel.ErrorMessage);
 		}
 
 
