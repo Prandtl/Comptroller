@@ -56,6 +56,11 @@ namespace Comptroller.Core.Repositories
 			_messenger.Publish(new RepositoryChangedMessage<Institute>(this, this, Method.Delete, institute));
 		}
 
+		public Institute GetById(int id)
+		{
+			return GetAll().FirstOrDefault(x => x.Id == id);
+		}
+
 		private readonly IDataManager<Institute> _dataManager;
 		private readonly IMvxMessenger _messenger;
 	}

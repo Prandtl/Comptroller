@@ -1,11 +1,29 @@
 ﻿using System.Windows.Input;
+using Acr.UserDialogs;
 using Comptroller.Core.Models;
+using Comptroller.Core.Repositories;
 using MvvmCross.Core.ViewModels;
 
 namespace Comptroller.Core.ViewModels
 {
 	public class InstituteDetailsViewModel : MvxViewModel
 	{
+		public InstituteDetailsViewModel(IInstituteRepository repository,IUserDialogs dialogs)
+		{
+			_dialogs = dialogs;
+			_repository = repository;
+		}
+
+		public void Init(Nav nav)
+		{
+			Institute = _repository.GetById(nav.Id);
+		}
+
+		public class Nav
+		{
+			public int Id { get; set; }
+		}
+
 		public Institute Institute
 		{
 			get { return _institute; }
@@ -41,7 +59,7 @@ namespace Comptroller.Core.ViewModels
 
 		private void DeleteInstitute()
 		{
-			//todo:Alert?
+			_dialogs.Alert("Not yet implemented.");
 		}
 
 		private void ChangeInstituteName()
@@ -51,12 +69,14 @@ namespace Comptroller.Core.ViewModels
 
 		private void GoBack()
 		{
-			throw new System.NotImplementedException();
+			Close(this);
 		}
 
 		private Institute _institute;
 		private MvxCommand _deleteInstituteCommand;
 		private MvxCommand _changeInstituteNameCommand;
 		private MvxCommand _goBackCommand;
+		private IUserDialogs _dialogs;
+		private IInstituteRepository _repository;
 	}
 }

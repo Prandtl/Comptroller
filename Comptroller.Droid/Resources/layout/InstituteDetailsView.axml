@@ -9,25 +9,11 @@
         android:layout_height="wrap_content"
         android:textSize="40dp"
         android:text="Institute name:" />
-    <EditText
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="40dp"
-        local:MvxBind="Text InstituteName" />
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:textColor="#aa1010"
-        local:MvxBind="Text ErrorMessage" />
-    <TextView
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:textColor="#dddddd"
-        local:MvxBind="Text SuccessMessage" />
+        local:MvxBind="Text Institute.Name" />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,11 +26,11 @@
             android:layout_alignParentBottom="true"
             local:MvxBind="Click GoBackCommand" />
         <Button
-            android:text="Add institute"
+            android:text="Delete"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button1"
             android:layout_above="@+id/button2"
-            local:MvxBind="Click AddCommand" />
+            local:MvxBind="Click DeleteInstituteCommand" />
     </RelativeLayout>
 </LinearLayout>

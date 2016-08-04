@@ -9,5 +9,6 @@ namespace Comptroller.Core.Repositories
 		void Add(Institute newInstitute);
 		void Update(Institute institute);
 		void Delete(Institute institute);
+		Institute GetById(int id);//todo:testit
 	}
 }

@@ -13,12 +13,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="Add new institute"
-            local:MvxBind="Click AddInstituteCommand"/>
+            local:MvxBind="Click AddInstituteCommand" />
         <Mvx.MvxListView
             android:id="@android:id/list"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:layout_above="@id/btn"
-            local:MvxBind="ItemsSource Institutes"/>
+            local:MvxBind="ItemsSource Institutes;ItemClick ShowInstituteDetailsCommand" />
     </RelativeLayout>
 </LinearLayout>

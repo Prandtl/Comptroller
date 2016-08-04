@@ -1,3 +1,5 @@
+using Acr.UserDialogs;
+using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
 
 namespace Comptroller.Core
@@ -20,6 +22,8 @@ namespace Comptroller.Core
 				.EndingWith("DataManager")
 				.AsInterfaces()
 				.RegisterAsLazySingleton();
+
+			Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
 
 			RegisterAppStart<ViewModels.InstituteListViewModel>();
 		}
