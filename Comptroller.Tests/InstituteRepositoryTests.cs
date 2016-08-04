@@ -93,6 +93,18 @@ namespace Comptroller.Tests
 			_messengerMock.Verify(mess => mess.Publish(It.IsAny<RepositoryChangedMessage<Institute>>()), Times.Exactly(3));
 		}
 
+		[Test]
+		public void ShouldPassIfSecondInstituteIsReturned()
+		{
+			var institute1 = new Institute { Id = 0, Name = "ИМКН" };
+			var institute2 = new Institute { Id = 1, Name = "ИСПН" };
+			var institute3 = new Institute { Id = 2, Name = "ИЕН" };
+			var institutes = new List<Institute>() { institute1, institute2, institute3 };
+			_instituteDmMock.Setup(x => x.GetAll()).Returns(institutes);
+			var _result = _instituteRepository.GetById(1);
+			Assert.AreEqual(institute2, _result);
+		}
+
 		private IInstituteRepository _instituteRepository;
 		private Mock<IDataManager<Institute>> _instituteDmMock;
 		private Mock<IMvxMessenger> _messengerMock;
