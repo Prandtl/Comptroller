@@ -34,7 +34,7 @@ namespace Comptroller.Core.ViewModels
 		{
 			get
 			{
-				_deleteInstituteCommand = _deleteInstituteCommand ?? new MvxCommand(DeleteInstitute);
+				_deleteInstituteCommand = _deleteInstituteCommand ?? new MvxCommand(PromptDeleteInstitute);
 				return _deleteInstituteCommand;
 			}
 		}
@@ -57,9 +57,25 @@ namespace Comptroller.Core.ViewModels
 			}
 		}
 
-		private void DeleteInstitute()
+		private void PromptDeleteInstitute()
 		{
-			_dialogs.Alert("Not yet implemented.");
+			var conf = new ConfirmConfig
+			{
+				Message = "This will delete institute, all groups in it and students in it.\n Are you sure?",
+				OkText = "Definetly, YES",
+				CancelText = "Cancel",
+				OnConfirm = OnConfirmDeleteInstitute
+			};
+
+
+			_dialogs.Confirm(conf);
+		}
+
+		private void OnConfirmDeleteInstitute(bool choice)
+		{
+			if (!choice) return;
+			_repository.Delete(Institute);
+			Close(this);
 		}
 
 		private void ChangeInstituteName()
